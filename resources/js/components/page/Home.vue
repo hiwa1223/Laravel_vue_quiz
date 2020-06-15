@@ -6,14 +6,14 @@
         <article class="col-md-8 col-xs-12">
           <section class="home-quiz__introduction">
             <h2 class="home-quiz__introduction-h2">
-              <img class="home-quiz__introduction-h2-logo" src="/public/images/what-is-mark.png" />4 Answers Quizとは?
+              <img class="home-quiz__introduction-h2-logo" src="/images/what-is-mark.png" />4 Answers Quizとは?
             </h2>
             <p>4 Answers Quizとはビジネスマナーから一般常識に至るまで様々なクイズを4択で出題するWEBアプリです。</p>
             <p>何度もトライしてみて正解率100%を目指してみてください。</p>
           </section>
           <section class="home-quiz__setting">
             <h2 class="home-quiz__setting-h2">
-              <img class="home-quiz__setting-h2-logo" src="/public/images/directory-icon.png" />出題設定
+              <img class="home-quiz__setting-h2-logo" src="/images/directory-icon.png" />出題設定
             </h2>
             <form action="/quiz" method="post">
               <label>
@@ -45,7 +45,7 @@
           </section>
           <section class="home-quiz__ranking">
             <h2 class="home-quiz__ranking-h2">
-              <img class="home-quiz__ranking-h2-logo" src="/public/images/graph-icon.png" />ランキング
+              <img class="home-quiz__ranking-h2-logo" src="/images/graph-icon.png" />ランキング
             </h2>
             <div>
               <label>
@@ -59,12 +59,12 @@
               </label>
             </div>
             <div class="home_quiz__ranking-chart">
-	      <bar-chart></bar-chart>
-	    </div>
+              <bar-chart></bar-chart>
+            </div>
           </section>
           <section class="home__notice">
             <h2 class="home__notice-h2">
-              <img class="home__notice-h2-logo" src="/public/images/news-icon.png" />お知らせ情報
+              <img class="home__notice-h2-logo" src="/images/news-icon.png" />お知らせ情報
             </h2>
             <dl>
               <dt>2019/08/23</dt>
@@ -72,7 +72,7 @@
             </dl>
           </section>
         </article>
-	<the-sidebar></the-sidebar>
+        <the-sidebar></the-sidebar>
       </div>
     </main>
     <the-footer></the-footer>
@@ -90,7 +90,7 @@ export default {
     TheHeader,
     TheFooter,
     TheSidebar,
-    BarChart,
+    BarChart
   }
 };
 </script>
