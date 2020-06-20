@@ -7,6 +7,13 @@
             <div class="panel panel-default">
               <div class="panel-heading text-center">ユーザー登録</div>
 
+              <div class="form-group has-error" v-if="errors.length !== 0">
+                <div class="alert alert-danger text-center">
+                  ユーザー登録実行時にエラーが発生しました
+                  <div v-for="(error, key, index) in errors" :key="index">{{error}}</div>
+                </div>
+              </div>
+
               <div class="panel-body">
                 <ValidationObserver
                   class="form-horizontal"
@@ -15,8 +22,10 @@
                   id="register"
                   method="post"
                   tag="form"
+                  @submit.prevent="register()"
                   v-slot="{ invalid }"
                 >
+                  <input type="hidden" name="_token" :value="csrf" />
                   <div class="form-group">
                     <label for="name" class="col-md-4 control-label">名前</label>
 
@@ -132,8 +141,24 @@ export default {
       name: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content")
     };
+  },
+  props: {
+    errors: {
+      type: Array | Object
+    }
+  },
+  methods: {
+    async register() {
+      const isValid = await this.$refs.observer.validate();
+      if (isValid) {
+        document.querySelector("#register").submit();
+      }
+    }
   }
 };
 </script>
