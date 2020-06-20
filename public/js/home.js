@@ -199,8 +199,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -38659,133 +38657,124 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("the-header"),
-      _vm._v(" "),
-      _c("main", [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c("article", { staticClass: "col-md-8 col-xs-12" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("section", { staticClass: "home-quiz__setting" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  [
-                    _vm._l(_vm.category, function(cate, index) {
-                      return _c("label", { key: index }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.categories,
-                              expression: "categories"
-                            }
-                          ],
-                          attrs: { type: "checkbox" },
-                          domProps: {
-                            value: cate.id,
-                            checked: Array.isArray(_vm.categories)
-                              ? _vm._i(_vm.categories, cate.id) > -1
-                              : _vm.categories
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.categories,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = cate.id,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.categories = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.categories = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.categories = $$c
-                              }
-                            }
-                          }
-                        }),
-                        _vm._v(_vm._s(cate.name) + " \n            ")
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary",
-                        attrs: { type: "submit" },
-                        on: {
-                          click: function($event) {
-                            $event.stopPropagation()
-                            $event.preventDefault()
-                            return _vm.goQuiz()
-                          }
-                        }
-                      },
-                      [_vm._v("出題開始")]
-                    )
-                  ],
-                  2
-                )
-              ]),
-              _vm._v(" "),
-              _c("section", { staticClass: "home-quiz__ranking" }, [
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "home_quiz__ranking-chart" },
-                  [_c("bar-chart")],
-                  1
-                )
-              ]),
+  return _c("div", [
+    _c("main", [
+      _c(
+        "div",
+        { staticClass: "container" },
+        [
+          _c("article", { staticClass: "col-md-8 col-xs-12" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("section", { staticClass: "home-quiz__setting" }, [
+              _vm._m(1),
               _vm._v(" "),
               _c(
-                "section",
-                { staticClass: "home__notice" },
+                "form",
                 [
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _vm._l(_vm.information, function(info, index) {
-                    return _c("dl", { key: index }, [
-                      _c("dt", [_vm._v(_vm._s(info.created_at))]),
-                      _vm._v(" "),
-                      _c("dd", [_vm._v(_vm._s(info.information))])
+                  _vm._l(_vm.category, function(cate, index) {
+                    return _c("label", { key: index }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.categories,
+                            expression: "categories"
+                          }
+                        ],
+                        attrs: { type: "checkbox" },
+                        domProps: {
+                          value: cate.id,
+                          checked: Array.isArray(_vm.categories)
+                            ? _vm._i(_vm.categories, cate.id) > -1
+                            : _vm.categories
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.categories,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = cate.id,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.categories = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.categories = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.categories = $$c
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(_vm._s(cate.name) + " \n            ")
                     ])
-                  })
+                  }),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "submit" },
+                      on: {
+                        click: function($event) {
+                          $event.stopPropagation()
+                          $event.preventDefault()
+                          return _vm.goQuiz()
+                        }
+                      }
+                    },
+                    [_vm._v("出題開始")]
+                  )
                 ],
                 2
               )
             ]),
             _vm._v(" "),
-            _c("the-sidebar")
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c("the-footer")
-    ],
-    1
-  )
+            _c("section", { staticClass: "home-quiz__ranking" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "home_quiz__ranking-chart" },
+                [_c("bar-chart")],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "section",
+              { staticClass: "home__notice" },
+              [
+                _vm._m(5),
+                _vm._v(" "),
+                _vm._l(_vm.information, function(info, index) {
+                  return _c("dl", { key: index }, [
+                    _c("dt", [_vm._v(_vm._s(info.created_at))]),
+                    _vm._v(" "),
+                    _c("dd", [_vm._v(_vm._s(info.information))])
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c("the-sidebar")
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {

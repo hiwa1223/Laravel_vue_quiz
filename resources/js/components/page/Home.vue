@@ -1,6 +1,5 @@
 <template>
   <div>
-    <the-header></the-header>
     <main>
       <div class="container">
         <article class="col-md-8 col-xs-12">
@@ -59,7 +58,6 @@
         <the-sidebar></the-sidebar>
       </div>
     </main>
-    <the-footer></the-footer>
   </div>
 </template>
 
