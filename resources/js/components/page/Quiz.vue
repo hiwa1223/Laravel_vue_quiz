@@ -67,7 +67,7 @@
               data-toggle="modal"
               data-target="#modal-result"
               class="center-block"
-              v-if="isQuizFinish"
+              v-show="isQuizFinish"
               @click="showResult"
             >結果を見る</button>
           </section>
@@ -76,6 +76,7 @@
       </div>
     </main>
     <the-footer></the-footer>
+    <the-modal :correctPercentageObject="correctPercentageObject" ref="modal" ></the-modal>
   </div>
 </template>
 
@@ -83,12 +84,14 @@
 import TheHeader from "../layout/TheHeader";
 import TheFooter from "../layout/TheFooter";
 import TheSidebar from "../layout/TheSidebar";
+import TheModal from "../module/TheModal";
 
 export default {
   components: {
     TheHeader,
     TheFooter,
     TheSidebar,
+    TheModal
   },
   data() {
     return {
@@ -105,6 +108,7 @@ export default {
       score: 0,
       quizNumber: 1,
       categoryName: "",
+      correctPercentageObject: {}
     };
   },
   mounted() {
@@ -112,10 +116,30 @@ export default {
     this.$http.get(`/api/quiz?categories=${categories}`).then(response => {
       this.quizData = response.data;
       this.findNextQuiz(0);
-      console.log(this.quizData);
     });
   },
   methods: {
+    goAnswer(selectAnswerNum) {
+      if (selectAnswerNum === 0) {
+        // selectAnswerNumが0の場合は、click 「正解を表示する」ボタンのクリック
+        this.isCorrect = false;
+        this.isMistake = false;
+      } else if (selectAnswerNum === Number(this.correctAnswerNo)) {
+        // 正解を押した場合
+        this.isCorrect = true;
+        this.isMistake = false;
+        this.score += 1;
+      } else {
+        // 不正解の場合
+        this.isMistake = true;
+        this.isCorrect = false;
+      }
+      // 回答済み
+      this.isAlreadyAnswered = true;
+      if (this.quizNumber >= 10) {
+        this.endQuiz();
+      }
+    },
     findNextQuiz(quizNumber) {
       this.title = this.quizData[quizNumber].title;
       this.answers = [
@@ -128,6 +152,30 @@ export default {
       this.correctAnswerNo = this.quizData[quizNumber].answer.correct_answer_no;
       this.categoryName = this.quizData[quizNumber].category.name;
     },
+    goNextQuiz() {
+      // 次の問題へをクリック
+      if (this.quizNumber >= 10) {
+        this.endQuiz();
+      } else {
+        this.findNextQuiz(this.quizNumber);
+        this.quizNumber += 1;
+        this.isCorrect = false;
+        this.isMistake = false;
+        this.isAlreadyAnswered = false;
+      }
+    },
+    endQuiz() {
+      this.isQuizFinish = true;
+      this.answerNo = "-";
+      this.isAlreadyAnswered = true;
+      this.correctPercentageObject = {
+        correctScore: this.score,
+        mistakeScore: 10 - this.score
+      };
+    },
+    showResult() {
+      this.$refs.modal.render();
+    }
   }
 };
 </script>
