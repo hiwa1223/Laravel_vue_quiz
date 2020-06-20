@@ -181,6 +181,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -189,6 +198,20 @@ __webpack_require__.r(__webpack_exports__);
     TheHeader: _layout_TheHeader__WEBPACK_IMPORTED_MODULE_0__["default"],
     TheFooter: _layout_TheFooter__WEBPACK_IMPORTED_MODULE_1__["default"],
     TheSidebar: _layout_TheSidebar__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      quizData: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var categories = this.$route.query.categories;
+    this.$http.get("/api/quiz?categories=".concat(categories)).then(function (response) {
+      _this.quizData = response.data;
+      console.log(_this.quizData);
+    });
   }
 });
 
