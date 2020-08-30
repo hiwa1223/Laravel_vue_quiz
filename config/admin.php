@@ -141,7 +141,7 @@ return [
             '_handle_action_',
         ],
     ],
-
+ 
     /*
     |--------------------------------------------------------------------------
     | Laravel-admin upload setting
@@ -154,7 +154,10 @@ return [
     'upload' => [
 
         // Disk in `config/filesystem.php`.
-        'disk' => 'admin',
+
+        // ここをadminからlocalに編集
+        'disk' => 'local',
+        // ここまで編集
 
         // Image and file upload path under the disk above.
         'directory' => [
